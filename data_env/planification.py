@@ -12,7 +12,7 @@ class Planification:
 
 		dict_infra = {}
 		list_building = []
-		list_infra = []
+		
   
 		infra_sudfs = network_df.groupby("infra_id")
   
@@ -24,18 +24,19 @@ class Planification:
 		dict_infra[infra_id] = Infrastructure(infra_id, length, infra_type, nb_houses)
   
       	building_sudfs = network_df.groupby("id_batiment")
-       
-       for id_building, building_sudfs["infra_id"]:
-            list_infra.append(dict_infra[infra_id])
+       for id_building, building_sudfs in building_sudfs:
+           list_infra = [dict_infra[infra_id] for infra_id in building_sudfs["infra_id"]]list_building.append(Building(id_building, list_infra))
+           
+               
 		
   
-	def run_planification_algo(self):
-		pass
+		def run_planification_algo(self):
+      		pass
 
 if __name__ == "__main__":
     csv_path = "/Users/colinepiera/bureau/MD5/cours_MD5/network_df"
 	planification_object = Planification()
-	planification_object.prepare_data()
+		planification_object.prepare_data()
 	planification_object.run_planification_algo()
  
  
